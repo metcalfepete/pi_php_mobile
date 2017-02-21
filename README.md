@@ -34,13 +34,6 @@ sudo apt-get install php5 libapache2-mod-php5 -y
 
 <p>To install PHP libraries the recommended approach is to use [Composer](https://getcomposer.org/). It is important to define the PHP/Pi directory. For simple installations everything could be put in the default <i>/var/www/html</i> directory, (to make things a little easier give the Pi user rights to this directory). To install composer:
 ```bash
-php composer.phar require piphp/gpio
-```
-<h2>Using PHP GPIO Library</h2>
-<p>
-
-
-```bash
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 
 php -r "if (hash_file('SHA384', 'composer-setup.php') === '55d6ead61b29c7bdee5cccfb50076874187bd9f21f65d8991d46ec5cc90518f447387fb9f76ebae1fbbacf329e583e30') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
@@ -48,8 +41,42 @@ php -r "if (hash_file('SHA384', 'composer-setup.php') === '55d6ead61b29c7bdee5cc
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
 ```
-<p>To install the PHP gpio library:
+To install the PIPHP library:
+
+```bash
+php composer.phar require piphp/gpio
 ```
+
+
+<p>To install the PHP gpio library:
+
+<h2>Using PIPHP Library</h2>
+<p>
+To use the PIPHP it is important to have the correct path to the <i>vendor/autoload.php</i> file. Below is an example of reading a GPIO pin. It is important to note that the PIPHP library uses BCM pin references and not wPin pin numbers.
+```php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<?php
+require_once 'vendor/autoload.php';
+
+use PiPHP\GPIO\GPIO;
+use PiPHP\GPIO\Pin\InputPinInterface;
+use PiPHP\GPIO\Pin\OutputPinInterface;
+
+// Configure a pin as an input pin and retrieve the value
+
+$buttonPin = $gpio->getOutputPin(27);
+$thevalue =  $buttonPin->getValue();
+echo "Pin 27 = ";
+echo  $thevalue;
+?>
+</body>
+</html>
+```
+
 
 
 
