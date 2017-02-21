@@ -53,7 +53,7 @@ php composer.phar require piphp/gpio
 
 <h2>Using PIPHP Library</h2>
 <p>
-To use the PIPHP it is important to have the correct path to the <i>vendor/autoload.php</i> file. Below is an example of reading a GPIO pin. It is important to note that the PIPHP library uses BCM pin references and not wPin pin numbers.
+To use the PIPHP it is important to have the correct path to the <i>vendor/autoload.php</i> file. Below is an example of reading a GPIO pin. It is important to note that the PIPHP library uses BCM pin references and not wPin pin numbers.</p>
 ```php
 <html>
 <body>
@@ -117,7 +117,7 @@ echo "Pin 7 status = " . $ret;
 </body>
 </html>
 ```
-A simple gpio write example would be:
+<p>A simple gpio write example would be:</p>
 ```php
 <html>
 <head>
@@ -134,7 +134,7 @@ echo "Pin 7 status = " . $ret;
 
 <h2>Using PiFace Modules</h2>
 
-<p>The PiFace Module is a shield or top that mounts on top of the Raspberry Pi. There are PiFace modules for Pi 1 and for Pi 2/3 hardware. The PiFace module offers a safe mechanism to connect motors and I/O that could potentially damage the Pi hardware. The PiFace has 8 outputs (with LED indication) that are referenced with GPIO pins 200-207. Below is picture of a PiFace module with LEDs 0/1 (GPIO 200/201) set. When using the gpio command with PiFace add the option <b>-p</b>. For example to set the first output on:
+<p>The PiFace Module is a shield or top that mounts on top of the Raspberry Pi. There are PiFace modules for Pi 1 and for Pi 2/3 hardware. The PiFace module offers a safe mechanism to connect motors and I/O that could potentially damage the Pi hardware. The PiFace has 8 outputs (with LED indication) that are referenced with GPIO pins 200-207. Below is picture of a PiFace module with LEDs 0/1 (GPIO 200/201) set. When using the gpio command with PiFace add the option <b>-p</b>. For example to set the first output on:</p>
 ```bash
 gpio -p write 200 1
 ```
@@ -152,7 +152,7 @@ gpio -p write 200 1
   <input type="submit" name="submit" value="stop">
 </form>
 ```
-<P>Then in the PHP code look a single value:
+<p>Then in the PHP code look a single value:</p>
 ```php
 <?php
 // define the GPIO pins for the motor ouptput (Note: PiFace pins start at 200)
@@ -182,7 +182,9 @@ if (isset($_POST['submit'])) {
 ?>
 ```
 #Mobile CCS Templates
-<p>There are quite a few good mobile templates to choose from. [Bootstrap](http://getbootstrap.com/) is one of the most popular frameworks, and for Pi applications is seems to be a good fit. </P>. A simple four button example would be as follows:</p>
+
+<p>There are quite a few good mobile templates to choose from. [Bootstrap](http://getbootstrap.com/) is one of the most popular frameworks, and for Pi applications is seems to be a good fit. A simple four button example would be as follows:</p>
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -227,7 +229,7 @@ if (isset($_POST['submit'])) {
 [missile launcher]( http://dreamcheeky.com/thunder-missile-launcher) was connected via a USB cable to the Pi. For the missile launcher program we created a Python app with command line options to set the action. Below are some example screenshots.</p>
 
 ![alt tag](launcher.png)
-![alt tag](screenshot.png)
+![alt tag](Screenshot.png)
 
 
 
