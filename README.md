@@ -32,7 +32,8 @@ sudo apt-get install php5 libapache2-mod-php5 -y
 
 <h2>Installing PHP GPIO Library</h2>
 
-<p>To install PHP libraries the recommended approach is to use [Composer](https://getcomposer.org/). It is important to define the PHP/Pi directory. For simple installations everything could be put in the default <i>/var/www/html</i> directory, (to make things a little easier give the Pi user rights to this directory). To install composer:
+<p>To install PHP libraries the recommended approach is to use [Composer](https://getcomposer.org/). It is important to define the PHP/Pi directory. For simple installations everything could be put in the default <i>/var/www/html</i> directory, (to make things a little easier give the Pi user rights to this directory). To install composer:</p>
+
 ```bash
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 
@@ -131,7 +132,7 @@ echo "Pin 7 status = " . $ret;
 </html>
 ```
 
-<h1>Using PiFace Modules</h1>
+<h2>Using PiFace Modules</h2>
 
 <p>The PiFace Module is a shield or top that mounts on top of the Raspberry Pi. There are PiFace modules for Pi 1 and for Pi 2/3 hardware. The PiFace module offers a safe mechanism to connect motors and I/O that could potentially damage the Pi hardware. The PiFace has 8 outputs (with LED indication) that are referenced with GPIO pins 200-207. Below is picture of a PiFace module with LEDs 0/1 (GPIO 200/201) set. When using the gpio command with PiFace add the option <b>-p</b>. For example to set the first output on:
 ```bash
