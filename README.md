@@ -54,10 +54,7 @@ php composer.phar require piphp/gpio
 <p>
 To use the PIPHP it is important to have the correct path to the <i>vendor/autoload.php</i> file. Below is an example of reading a GPIO pin. It is important to note that the PIPHP library uses BCM pin references and not wPin pin numbers.
 ```php
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
+<html>
 <body>
 <?php
 require_once 'vendor/autoload.php';
@@ -76,10 +73,75 @@ echo  $thevalue;
 </body>
 </html>
 ```
+<p>A simple GPIO set or write example would be:</p>
+```php
+<html>
+<body>
+<?php
+require_once 'vendor/autoload.php';
 
+use PiPHP\GPIO\GPIO;
+use PiPHP\GPIO\Pin\InputPinInterface;
+use PiPHP\GPIO\Pin\OutputPinInterface;
 
+$gpio = new GPIO();
 
+// Configure an output pin
+$pin = $gpio->getOutputPin(4);
 
+// Set the value of the pin high (turn it on)
+$pin->setValue(PinInterface::VALUE_HIGH);
+
+echo "Pin 4 set High";
+?>
+
+</body>
+</html>
+```
+##GPIO Command Line Utility
+<p>The Raspberry Pi <b>gpio</b> command line utility can also be used in PHP. Using the <b>gpio</b> has a few advantages over the PIPHP library:
+*support for non-standard pin options (PiFace)
+*supports a readall function to check the status of all pins
+*you can quickly prototype at the command line
+<p>To use the gpio command the PHP <i>shell_exec</i> statement is used. A simple gpio read example is:</p>
+```php
+<html lang="en">
+<head>
+</head>
+<body>
+<?php
+$ret = shell_exec('gpio read 7');
+echo "Pin 7 status = " . $ret;
+?>
+</body>
+</html>
+```
+A simple gpio write example would be:
+```php
+<html>
+<head>
+</head>
+<body>
+<?php
+exec("gpio write 7 1");
+$ret = shell_exec('gpio read 7');
+echo "Pin 7 status = " . $ret;
+?>
+</body>
+</html>
+```
+
+<h1>Using PiFace Modules</h1>
+
+<p>The PiFace Module is a shield or top that mounts on top of the Raspberry Pi. There are PiFace modules for Pi 1 and for Pi 2/3 hardware. The PiFace module offers a safe mechanism to connect motors and I/O that could potentially damage the Pi hardware. The PiFace has 8 outputs (with LED indication) that are referenced with GPIO pins 200-207. Below is picture of a PiFace module with LEDs 0/1 (GPIO 200/201) set. When using the gpio command with PiFace add the option <b>-p</b>. For example to set the first output on:
+```bash
+gpio -p write 200 1
+```
+![alt tag](php_piface.png)
+
+#PHP Forms
+
+<P>For many Pi projects button interfaces are all this in required. In the Web design this is not typical, so it is important to determine which button is pushed.
 
 
 
