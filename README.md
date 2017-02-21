@@ -24,15 +24,15 @@ sudo apt-get install php5 libapache2-mod-php5 -y
 <p>To test that your installation is working open a browser on the Pi and go to: <b>http://localhost</b>. If the default (index.html) page comes up then you've install Apache correctly.</p>
 
 <h2>PHP Interfacing to Pi GPIO</h2>
-<p>There are a few to access the GPIO pin in PHP:</p>
+<p>There are a few ways to access the GPIO pins in PHP:</p>
 * use a PHP library
 * shell to the <b>gpio</b> command
 
-<p>Using a PHP library allows for a standard PHP interface, with an object module. From testing we found that the PHP libraries were not as flexible as the standard gpio command. For example you are not able to access PiFace pins (200+).
+<p>Using a PHP library allows for a standard PHP interface, with an object model. From testing we found that the PHP libraries were not as flexible as the standard gpio command. For example you are not able to access PiFace pins (pin numbers > 200).
 
 <h2>Installing PHP GPIO Library</h2>
 
-<p>To install PHP libraries the recommended approach is to use [Composer](https://getcomposer.org/). It is important to define the PHP/Pi directory. For simple installations everything could be put in the default <i>/var/www/html</i> directory, (to make things a little easier give the Pi user rights to this directory). To install composer:</p>
+<p>To install PHP libraries the recommended approach is to use [Composer](https://getcomposer.org/). It is important to define a PHP/Pi Web directory. For simple installations everything could be put in the default <i>/var/www/html</i> directory, (to make things a little easier give the Pi user rights to this directory). To install composer:</p>
 
 ```bash
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -42,18 +42,16 @@ php -r "if (hash_file('SHA384', 'composer-setup.php') === '55d6ead61b29c7bdee5cc
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
 ```
-To install the PIPHP library:
+<p>To install the PIPHP library:</p>
 
 ```bash
 php composer.phar require piphp/gpio
 ```
 
-
-<p>To install the PHP gpio library:
-
 <h2>Using PIPHP Library</h2>
 <p>
 To use the PIPHP it is important to have the correct path to the <i>vendor/autoload.php</i> file. Below is an example of reading a GPIO pin. It is important to note that the PIPHP library uses BCM pin references and not wPin pin numbers.</p>
+
 ```php
 <html>
 <body>
@@ -95,12 +93,12 @@ $pin->setValue(PinInterface::VALUE_HIGH);
 
 echo "Pin 4 set High";
 ?>
-
 </body>
 </html>
 ```
+
 ##GPIO Command Line Utility
-<p>The Raspberry Pi <b>gpio</b> command line utility can also be used in PHP. Using the <b>gpio</b> has a few advantages over the PIPHP library:
+<p>The Raspberry Pi <b>gpio</b> command line utility can also be used in PHP. Using the <b>gpio</b> has a few advantages over the PIPHP library:</p>
 *support for non-standard pin options (PiFace)
 *supports a readall function to check the status of all pins
 *you can quickly prototype at the command line
@@ -134,7 +132,7 @@ echo "Pin 7 status = " . $ret;
 
 <h2>Using PiFace Modules</h2>
 
-<p>The PiFace Module is a shield or top that mounts on top of the Raspberry Pi. There are PiFace modules for Pi 1 and for Pi 2/3 hardware. The PiFace module offers a safe mechanism to connect motors and I/O that could potentially damage the Pi hardware. The PiFace has 8 outputs (with LED indication) that are referenced with GPIO pins 200-207. Below is picture of a PiFace module with LEDs 0/1 (GPIO 200/201) set. When using the gpio command with PiFace add the option <b>-p</b>. For example to set the first output on:</p>
+<p>The PiFace Module is a shield or top that mounts on top of the Raspberry Pi. There are PiFace modules for Pi 1 and for Pi 2/3 hardware. The PiFace module offers a safe mechanism to connect motors and I/O to the Pi hardware. The PiFace has digital 8 outputs (with LED indication) that are referenced with GPIO pins 200-207. Below is picture of a PiFace module with LEDs 0/1 (GPIO 200/201) set. When using the gpio command with PiFace add the <b>-p</b> option. For example to set the first output on:</p>
 ```bash
 gpio -p write 200 1
 ```
@@ -142,7 +140,7 @@ gpio -p write 200 1
 
 #PHP Forms
 
-<P>For many Pi projects button interfaces are all that is required. In the Web design this is not typical, so it is important to determine which button is pushed. One approach to this problem is to give all the buttons the same name:</p>
+<p>For many Pi projects button interfaces are all that is required. In the Web design this is not typical so it is important to determine which button is pushed. One approach to this problem is to give all the buttons the same name:</p>
 
 ```html
 <form action="" method="post">
@@ -152,7 +150,7 @@ gpio -p write 200 1
   <input type="submit" name="submit" value="stop">
 </form>
 ```
-<p>Then in the PHP code look a single value:</p>
+<p>Then in the PHP code look for a value for this form variable:</p>
 ```php
 <?php
 // define the GPIO pins for the motor ouptput (Note: PiFace pins start at 200)
@@ -183,7 +181,7 @@ if (isset($_POST['submit'])) {
 ```
 #Mobile CCS Templates
 
-<p>There are quite a few good mobile templates to choose from. [Bootstrap](http://getbootstrap.com/) is one of the most popular frameworks, and for Pi applications is seems to be a good fit. A simple four button example would be as follows:</p>
+<p>There are quite a few good mobile templates to choose from. [Bootstrap](http://getbootstrap.com/) is one of the most popular frameworks, and for Pi applications it seems to be a good fit. A simple four button example would be:</p>
 
 ```html
 <!DOCTYPE html>
@@ -217,21 +215,15 @@ if (isset($_POST['submit'])) {
 * Add references in to the bootstrap ccs and js files
 * <input> or <button> tags can be used, <button> tags however offer a button text that can be different than the value
 * Add <button> tags with the required class definitions:
-	* the <i>btn-lg</i> class will make a large button, instead of <i>btn</i>
-	* different button colours are possible using <i>btn-info<i>, <i>btn-success<i>. <i>btn-danger<i> 
-* Button width is defined with style="width: xx%" 
+	* the <i>btn-lg</i> class will make a large button, instead of standard sized <i>btn</i>
+	* different button colours are possible using <i>btn-info</i>, <i>btn-success</i>. <i>btn-danger</i> 
+* Button width is defined with <i>style="width: xx%" </i>. For multiple buttons the sum of the width needs to <100%
 
 ![alt tag](4buttons.png)
 
 ##Further Examples
 
-<p>Below are some pictures of a mobile rocket launcher project that we did. The Web page had two sections. The top section controlled bidirectional motors that were connected to a Explorer HAT Pro shield. The botton section controlled the rocket launcher turret. The 
-[missile launcher]( http://dreamcheeky.com/thunder-missile-launcher) was connected via a USB cable to the Pi. For the missile launcher program we created a Python app with command line options to set the action. Below are some example screenshots.</p>
+Below are some pictures of a mobile rocket launcher project that we did. The Web page had two sections. The top section controlled bidirectional motors that were connected to a Explorer HAT Pro shield. The botton section controlled the rocket launcher turret. The [missile launcher]( http://dreamcheeky.com/thunder-missile-launcher) was connected via a USB cable to the Pi. For the missile launcher program we created a Python app with command line options to set the action. Below are some example screenshots.
 
 ![alt tag](launcher.png)
 ![alt tag](Screenshot.png)
-
-
-
-
-
