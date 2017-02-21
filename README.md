@@ -182,10 +182,52 @@ if (isset($_POST['submit'])) {
 ?>
 ```
 #Mobile CCS Templates
-<p>There are quite a few good mobile templates to choose from. [Bootstrap](http://getbootstrap.com/) is one of the most popular frameworks, and for Pi applications is seems to be a good fit. </P>.
+<p>There are quite a few good mobile templates to choose from. [Bootstrap](http://getbootstrap.com/) is one of the most popular frameworks, and for Pi applications is seems to be a good fit. </P>. A simple four button example would be as follows:</p>
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PHP/Pi Rover Controls</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
 
+  <h2>PI Four Button Example</h2>
+  <form action="" method="post">
+    <div class="form-group">
 
+    <button type="submit" name="submit" class="btn-success btn-lg" style="width:100%" value="go">Forward</button>
+    <button type="submit" name="submit" class="btn-info btn-lg" style="width:49%" value="left">Left</button>
+    <button type="submit" name="submit" class="btn-info btn-lg" style="width:49%" value="right">Right</button>
+    <button type="submit" name="submit" class="btn-danger btn-lg" style="width:100%" value="stop">Stop</button>
+  </form>
+</div>
 
+</body>
+</html>
+
+```
+<p>Some of the key items are:</p>
+* Add references in to the bootstrap ccs and js files
+* <input> or <button> tags can be used, <button> tags however offer a button text that can be different than the value
+* Add <button> tags with the required class definitions:
+	* the <i>btn-lg</i> class will make a large button, instead of <i>btn</i>
+	* different button colours are possible using <i>btn-info<i>, <i>btn-success<i>. <i>btn-danger<i> 
+* Button width is defined with style="width: xx%" 
+
+![alt tag](4buttons.png)
+
+##Further Examples
+
+<p>Below are some pictures of a mobile rocket launcher project that we did. The Web page had two sections. The top section controlled bidirectional motors that were connected to a Explorer HAT Pro shield. The botton section controlled the rocket launcher turret. The 
+[missile launcher]( http://dreamcheeky.com/thunder-missile-launcher) was connected via a USB cable to the Pi. For the missile launcher program we created a Python app with command line options to set the action. Below are some example screenshots.</p>
+
+![alt tag](launcher.png)
+![alt tag](screenshot.png)
 
 
 
