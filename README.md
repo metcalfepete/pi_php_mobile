@@ -142,7 +142,49 @@ gpio -p write 200 1
 
 #PHP Forms
 
-<P>For many Pi projects button interfaces are all this in required. In the Web design this is not typical, so it is important to determine which button is pushed.
+<P>For many Pi projects button interfaces are all that is required. In the Web design this is not typical, so it is important to determine which button is pushed. One approach to this problem is to give all the buttons the same name:</p>
+
+```html
+<form action="" method="post">
+  <input type="submit" name="submit" value="go">
+  <input type="submit" name="submit" value="left">
+  <input type="submit" name="submit" value="right">
+  <input type="submit" name="submit" value="stop">
+</form>
+```
+<P>Then in the PHP code look a single value:
+```php
+<?php
+// define the GPIO pins for the motor ouptput (Note: PiFace pins start at 200)
+$leftpin = 24;
+$rightpin = 29;
+
+if (isset($_POST['submit'])) {
+	switch ($_POST['submit']) {
+		case "go":
+			exec("gpio write " . $leftpin . " 1");
+			exec("gpio write " . $rightpin . " 1");
+			break;
+		case "stop":
+			exec("gpio write " . $leftpin . " 0");
+			exec("gpio write " . $rightpin . " 0");
+			break;
+		case "left":
+			exec("gpio write " . $leftpin . " 1");
+			exec("gpio write " . $rightpin . " 0");
+			break;
+		case "right":
+			exec("gpio write " . $leftpin . " 0");
+			exec("gpio write " . $rightpin . " 1");
+			break;
+	}
+}
+?>
+```
+#Mobile CCS Templates
+<p>There are quite a few good mobile templates to choose from. [Bootstrap](http://getbootstrap.com/) is one of the most popular frameworks, and for Pi applications is seems to be a good fit. </P>.
+
+
 
 
 
