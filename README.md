@@ -24,7 +24,7 @@ sudo apt-get install php5 libapache2-mod-php5 -y
 <p>To test that your installation is working open a browser on the Pi and go to: <b>http://localhost</b>. If the default (index.html) page comes up then you've install Apache correctly.</p>
 
 <h2>PHP Interfacing to Pi GPIO</h2>
-<p>There are a few ways to access the GPIO pins in PHP:</p>
+There are a few ways to access the GPIO pins in PHP:
 * use a PHP library
 * shell to the <b>gpio</b> command
 
