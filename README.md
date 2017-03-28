@@ -24,9 +24,9 @@ sudo apt-get install php5 libapache2-mod-php5 -y
 <p>To test that your installation is working open a browser on the Pi and go to: <b>http://localhost</b>. If the default (index.html) page comes up then you've install Apache correctly.</p>
 
 <h2>PHP Interfacing to Pi GPIO</h2>
-There are a few ways to access the GPIO pins in PHP:
-* use a PHP library
-* shell to the <b>gpio</b> command
+There are a few ways to access the GPIO pins in PHP:<br>
+1. use a PHP library<br>
+2. shell to the <b>gpio</b> command<br>
 
 <p>Using a PHP library allows for a standard PHP interface, with an object model. From testing we found that the PHP libraries were not as flexible as the standard gpio command. For example you are not able to access PiFace pins (pin numbers > 200).
 
