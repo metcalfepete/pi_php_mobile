@@ -102,7 +102,9 @@ echo "Pin 4 set High";
 *support for non-standard pin options (PiFace)
 *supports a readall function to check the status of all pins
 *you can quickly prototype at the command line
-<p>To use the gpio command the PHP <i>shell_exec</i> statement is used. A simple gpio read example is:</p>
+
+To use the gpio command the PHP <i>shell_exec</i> statement is used. A simple gpio read example is:
+
 ```html
 <html lang="en">
 <head>
