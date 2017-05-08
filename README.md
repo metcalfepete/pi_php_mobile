@@ -52,7 +52,7 @@ php composer.phar require piphp/gpio
 <p>
 To use the PIPHP it is important to have the correct path to the <i>vendor/autoload.php</i> file. Below is an example of reading a GPIO pin. It is important to note that the PIPHP library uses BCM pin references and not wPin pin numbers.</p>
 
-```php
+```html
 <html>
 <body>
 <?php
@@ -73,7 +73,7 @@ echo  $thevalue;
 </html>
 ```
 <p>A simple GPIO set or write example would be:</p>
-```php
+```html
 <html>
 <body>
 <?php
@@ -103,7 +103,7 @@ echo "Pin 4 set High";
 *supports a readall function to check the status of all pins
 *you can quickly prototype at the command line
 <p>To use the gpio command the PHP <i>shell_exec</i> statement is used. A simple gpio read example is:</p>
-```php
+```html
 <html lang="en">
 <head>
 </head>
@@ -116,7 +116,7 @@ echo "Pin 7 status = " . $ret;
 </html>
 ```
 <p>A simple gpio write example would be:</p>
-```php
+```html
 <html>
 <head>
 </head>
@@ -133,6 +133,7 @@ echo "Pin 7 status = " . $ret;
 <h2>Using PiFace Modules</h2>
 
 <p>The PiFace Module is a shield or top that mounts on top of the Raspberry Pi. There are PiFace modules for Pi 1 and for Pi 2/3 hardware. The PiFace module offers a safe mechanism to connect motors and I/O to the Pi hardware. The PiFace has digital 8 outputs (with LED indication) that are referenced with GPIO pins 200-207. Below is picture of a PiFace module with LEDs 0/1 (GPIO 200/201) set. When using the gpio command with PiFace add the <b>-p</b> option. For example to set the first output on:</p>
+
 ```bash
 gpio -p write 200 1
 ```
@@ -151,6 +152,7 @@ gpio -p write 200 1
 </form>
 ```
 <p>Then in the PHP code look for a value for this form variable:</p>
+
 ```php
 <?php
 // define the GPIO pins for the motor ouptput (Note: PiFace pins start at 200)
