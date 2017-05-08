@@ -72,7 +72,7 @@ echo  $thevalue;
 </body>
 </html>
 ```
-<p>A simple GPIO set or write example would be:</p>
+A simple GPIO set or write example would be:
 ```html
 <html>
 <body>
@@ -115,7 +115,8 @@ echo "Pin 7 status = " . $ret;
 </body>
 </html>
 ```
-<p>A simple gpio write example would be:</p>
+A simple gpio write example would be:
+
 ```html
 <html>
 <head>
