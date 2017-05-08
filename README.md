@@ -97,7 +97,7 @@ echo "Pin 4 set High";
 </html>
 ```
 
-##GPIO Command Line Utility
+<h2>GPIO Command Line Utility</h2>
 <p>The Raspberry Pi <b>gpio</b> command line utility can also be used in PHP. Using the <b>gpio</b> has a few advantages over the PIPHP library:</p>
 *support for non-standard pin options (PiFace)
 *supports a readall function to check the status of all pins
@@ -140,7 +140,7 @@ gpio -p write 200 1
 ```
 ![alt tag](php_piface.png)
 
-#PHP Forms
+<h1>PHP Forms</h1>
 
 <p>For many Pi projects button interfaces are all that is required. In the Web design this is not typical so it is important to determine which button is pushed. One approach to this problem is to give all the buttons the same name:</p>
 
