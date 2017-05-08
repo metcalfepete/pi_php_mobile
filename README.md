@@ -184,7 +184,7 @@ if (isset($_POST['submit'])) {
 }
 ?>
 ```
-#Mobile CCS Templates
+<h1>Mobile CCS Templates</h1>
 
 <p>There are quite a few good mobile templates to choose from. [Bootstrap](http://getbootstrap.com/) is one of the most popular frameworks, and for Pi applications it seems to be a good fit. A simple four button example would be:</p>
 
@@ -226,7 +226,7 @@ if (isset($_POST['submit'])) {
 
 ![alt tag](4buttons.png)
 
-##Further Examples
+<h2>Further Examples</h2>
 
 Below are some pictures of a mobile rocket launcher project that we did. The Web page had two sections. The top section controlled bidirectional motors that were connected to a Explorer HAT Pro shield. The botton section controlled the rocket launcher turret. The [missile launcher]( http://dreamcheeky.com/thunder-missile-launcher) was connected via a USB cable to the Pi. For the missile launcher program we created a Python app with command line options to set the action. Below are some example screenshots.
 
