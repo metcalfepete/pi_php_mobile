@@ -5,7 +5,7 @@ Use PHP to enable mobile devices to control Raspberry Pi projects
 
 The goal of this project is to examine some of the pitfalls and issues around creating a mobile browser interface to a Raspberry Pi projects.
 
-This projects look at:<br>
+This project looks at:<br>
 
 1. Interfacing PHP to Pi GPIO pins<br>
 2. Managing PHP <form> interfacing where there are only buttons<br>
